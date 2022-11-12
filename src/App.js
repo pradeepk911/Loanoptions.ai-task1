@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import {useState} from 'react';
+import React from "react";
 import './App.css';
 
 function App(){
@@ -8,7 +9,7 @@ function App(){
   const [isLoading, setIsLoading] = useState(false);
   const [isDataLoaded, setDataLoaded] = useState(false);
   const [err, setErr] = useState('');
-  
+
   const load = async () => {
     setIsLoading(true);
 
@@ -37,9 +38,16 @@ function App(){
     }
   };
 
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
 
   const deleteLast = () => {
-    
+    const result = data;
+    result.splice(-1);
+    setData(result);
+    forceUpdate();
+
   }
 
   const add = () => {
