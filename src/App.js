@@ -52,6 +52,10 @@ function App(){
 
   const add = () => {
     
+    const firstElement = data[0];
+    setData([...data, firstElement]);
+    forceUpdate();
+
   }
 
   return (
